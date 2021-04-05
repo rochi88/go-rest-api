@@ -3,10 +3,12 @@ module go-rest-api
 go 1.15
 
 require (
+	github.com/go-sql-driver/mysql v1.5.0
 	github.com/google/uuid v1.2.0 // indirect
 	github.com/gorilla/mux v1.8.0
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/satori/go.uuid v1.2.0 // indirect
+	github.com/tus/tusd v1.6.0
 	go.mongodb.org/mongo-driver v1.5.0
 	gopkg.in/couchbase/gocb.v1 v1.6.7 // indirect
 	gopkg.in/couchbase/gocbcore.v7 v7.1.18 // indirect

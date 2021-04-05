@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/gorilla/mux"
+
 	"github.com/tus/tusd/pkg/filestore"
 	tusd "github.com/tus/tusd/pkg/handler"
 )
@@ -50,8 +52,14 @@ func main() {
 	// Right now, nothing has happened since we need to start the HTTP server on
 	// our own. In the end, tusd will start listening on and accept request at
 	// http://localhost:8080/files
-	http.Handle("/files/", http.StripPrefix("/files/", handler))
-	err = http.ListenAndServe(":8080", nil)
+	fmt.Println("Starting the application...")
+	router := mux.NewRouter()
+	// router.HandleFunc("/person", CreatePersonEndpoint).Methods("POST")
+	// router.HandleFunc("/people", GetPeopleEndpoint).Methods("GET")
+	// router.HandleFunc("/person/{id}", GetPersonEndpoint).Methods("GET")
+	router.Handle("/files/", http.StripPrefix("/files/", handler))
+	fmt.Println("Listening Port : 8090")
+	err = http.ListenAndServe(":8090", router)
 	if err != nil {
 		panic(fmt.Errorf("Unable to listen: %s", err))
 	}
